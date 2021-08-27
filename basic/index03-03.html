@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-03 get/set</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="exmaple">
+        금액 : <span>{{amount}}원</span>
+    </div>
+    <script type="text/javascript">
+    var vm = new Vue({
+        el : "#exmaple",
+        data : {amt : 1234567},
+        computed : {
+            amount :{
+                get : function() {
+                    // 숫자를 문자로 받아와 3자리마다 , 를 추가 
+                    var s = new String("" +this.amt);
+                    var result= "";
+                    var num =0;
+                    for (var i = s.length-1 ; i >=0;  i--){
+                        result =s[i] + result;
+                    if (num %3 == 2 && i !==0)
+                        result = "," +result;
+                        num++ ;
+                    }
+                    return result;
+                },
+                set : function(amt){
+                    if(typeof(amt) === "string"){
+                        var result = parseInt(amt.replace(/,/g,""))
+                        if(isNaN(result)) this.amt = 0;
+                        else this.amt = result;
+                    } else if (typeof(amt) === "number")
+                    this.amt = amt;
+                }
+            }
+        }
+    });
+    </script>
+</body>
+</html>
