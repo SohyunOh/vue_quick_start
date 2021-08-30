@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-05 계산형</title>
+    <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="exmaple">
+        x : <input type="text"v-model="x"/><br/>
+        y : <input type="text"v-model="y"/><br/>
+        덧셈 결과 : {{sum}}
+    </div>
+    <script type="text/javascript">
+    var vm = new Vue({
+        el : "#exmaple",
+        data : { x:0, y :0, sum :0 },
+        
+        Comment : {
+            sum : function(){
+                var result = Number(this.x) +Number(this.y);
+                if(isNaN(result)) return 0;
+                else return result;
+            }
+        }
+    
+    
+    })
+    </script>
+
+</body>
+</html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>02-11 계산형 속성 v-bind</title>
+    <title>03-11 라이프 사이클 훅 추가</title>
     <script src="https://unpkg.com/vue"></script>
 </head>
 <body>
@@ -23,6 +23,13 @@
     var vmSum = new Vue({
         el: '#exmaple',
         data : { num : 0},
+        created : function(){
+            console.log("created!");
+        },
+        updated : function () {
+            console.log("updated!!"),
+            console.log(this.num);
+        },
         computed :{
             sum : function(){
                 var n = Number(this.num);
